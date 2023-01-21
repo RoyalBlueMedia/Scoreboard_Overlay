@@ -15,4 +15,4 @@ npm run dev
 ```
 
 ## Opening
-Create a browser source in OBS and add http://localhost:5173/scoreboard/"Link to the division"
+Create a browser source in OBS and add http://localhost:5173/scoreboard/Link_to_the_division
