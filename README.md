@@ -14,5 +14,5 @@ npm install
 npm run dev
 ```
 
-## Opening
+## Using
 Create a browser source in OBS and add http://localhost:5173/scoreboard/Link_to_the_division
