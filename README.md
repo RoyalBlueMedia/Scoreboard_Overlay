@@ -16,3 +16,7 @@ npm run dev
 
 ## Using
 Create a browser source in OBS and add http://localhost:5173/scoreboard/Link_to_the_division
+
+# Hosting
+
+You can use Netlify to host a free version for yourself!
