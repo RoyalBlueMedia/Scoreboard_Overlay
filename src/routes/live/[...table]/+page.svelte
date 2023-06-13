@@ -76,7 +76,7 @@
 
     // Inner Text
     ctx.font = "900 120px Inter";
-    ctx.fillStyle = "#343434E6"; // E6 = 90% Opacity
+    ctx.fillStyle = "#343434FA"; // FA = 98% Opacity
 
     if (state.includes(":")) { // - 0:2 | 1:1 | 2:0 -
       const leftDigitWidth = ctx.measureText(state[0]).width;
