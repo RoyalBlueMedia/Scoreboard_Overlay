@@ -15,10 +15,10 @@ async function fetchData(tableURL) {
     const $ = cheerio.load(html);
     const tableBody = $("section.league-group-scores > .section-content > table > tbody");
   
-    const teams = tableBody.find("tr > td:nth-child(2) > a > span.table-cell-item:nth-child(3)").toArray().map(el => $(el).text());
-    const logos = tableBody.find("tr > td:nth-child(2) > a > span.table-cell-item:nth-child(1) > img").toArray().map(el => $(el).attr("data-src"));
-    const wins = tableBody.find("tr > td:nth-child(3) > a").toArray().map(el => parseInt($(el).text(), 10));
-    const losses = tableBody.find("tr > td:nth-child(4) > a").toArray().map(el => parseInt($(el).text(), 10));
+    const teams = tableBody.find("tr > td:nth-child(2) > a > span.table-cell-item.name").toArray().map(el => $(el).text());
+    const logos = tableBody.find("tr > td:nth-child(2) > a > span.table-cell-item.img-container img").toArray().map(el => $(el).attr("data-src"));
+    const wins = tableBody.find("tr > td:nth-child(3) > a").toArray().map(el => parseInt($(el).text().split("-")[0], 10));
+    const losses = tableBody.find("tr > td:nth-child(3) > a").toArray().map(el => parseInt($(el).text().split("-")[1], 10));
 
     if (!teams.length) return {error: "Not a valid URL"}
   
