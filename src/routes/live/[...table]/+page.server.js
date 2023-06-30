@@ -2,8 +2,10 @@ import * as cheerio from 'cheerio';
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load({ params, url }) {
-  const options = {
-    score: url.searchParams.get("score")
+  var options = {
+    score: url.searchParams.get("score"),
+	color: url.searchParams.get("color"),
+	tcolor: url.searchParams.get("tcolor")
   }
 
   return await fetchData(params.table, options);
