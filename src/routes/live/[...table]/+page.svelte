@@ -63,7 +63,7 @@
 
     // Border
     ctx.lineWidth = 1;
-    ctx.strokeStyle = "#343434";
+    if (data.options.color) { ctx.strokeStyle = "#" + data.options.color; } else { ctx.strokeStyle = "#343434"; }
     ctx.strokeRect(45.5, 270.5, 711, 201);
     ctx.beginPath();
     ctx.moveTo(400.5, 270.5);
@@ -76,7 +76,7 @@
 
     // Inner Text
     ctx.font = "900 120px Inter";
-    ctx.fillStyle = "#343434FA"; // FA = 98% Opacity
+	if (data.options.color) { ctx.fillStyle = "#" + data.options.color + "FA"; } else { ctx.fillStyle = "#343434FA"; }  // FA = 98% Opacity
 
     if (state.includes(":")) { // - 0:2 | 1:1 | 2:0 -
       const leftDigitWidth = ctx.measureText(state[0]).width;
@@ -92,10 +92,11 @@
 
     // Team names
     ctx.font = "900 29px Inter";
-    ctx.fillStyle = "#343434";
+    if (data.options.color) { ctx.fillStyle = "#" + data.options.color; } else { ctx.fillStyle = "#343434"; }
     ctx.fillRect(45, 471, 120, 51);
     ctx.fillRect(637, 471, 120, 51);
-    ctx.fillStyle = "white";
+	if (data.options.tcolor) { ctx.fillStyle = "#" + data.options.tcolor; } else { ctx.fillStyle = "white"; }
+    //ctx.fillStyle = "white";
     ctx.fillText(data.teams[0].name, 105 - ctx.measureText(data.teams[0].name).width/2, 507);
     ctx.fillText(data.teams[1].name, 696 - ctx.measureText(data.teams[1].name).width/2, 507);
 
