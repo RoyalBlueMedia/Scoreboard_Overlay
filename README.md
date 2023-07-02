@@ -12,6 +12,13 @@ Show a match graphic of a matchday with team logos, abbreviations and a score. D
 ?score=2:0
 ```
 
+# Color
+With the options color and tcolor you can now change the Color of the Boxes for the Team abbreviations as well as the font color. Values are in hex:
+```
+?color=000000 (Black Background)
+?tcolor=000000&color=ffffff (Black Text on white Background)
+```
+
 # Development
 
 ## Install
