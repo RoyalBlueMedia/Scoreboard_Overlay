@@ -30,8 +30,9 @@
   }];
 
   export let data;
-  let state = "VS";
-  if (data.options.score) state = data.options.score;
+  const state = data.options.score || "VS";
+  const textColor = "#" + (data.options.tcolor || "FFF"); // Default text color: White
+  const backgroundColor = "#" + (data.options.color || "343434"); // Default background color: Dark Gray
 
   onMount(async () => {
     if (data.error) {
@@ -63,7 +64,7 @@
 
     // Border
     ctx.lineWidth = 1;
-    if (data.options.color) { ctx.strokeStyle = "#" + data.options.color; } else { ctx.strokeStyle = "#343434"; }
+    ctx.strokeStyle = backgroundColor;
     ctx.strokeRect(45.5, 270.5, 711, 201);
     ctx.beginPath();
     ctx.moveTo(400.5, 270.5);
@@ -72,11 +73,11 @@
     ctx.beginPath();
     ctx.moveTo(400.5, 429.5);
     ctx.lineTo(400.5, 470.5);
-    ctx.stroke(); 
+    ctx.stroke();
 
     // Inner Text
     ctx.font = "900 120px Inter";
-	if (data.options.color) { ctx.fillStyle = "#" + data.options.color + "FA"; } else { ctx.fillStyle = "#343434FA"; }  // FA = 98% Opacity
+	  ctx.fillStyle = backgroundColor + "FA"; // FA = 98% Opacity
 
     if (state.includes(":")) { // - 0:2 | 1:1 | 2:0 -
       const leftDigitWidth = ctx.measureText(state[0]).width;
@@ -92,10 +93,10 @@
 
     // Team names
     ctx.font = "900 29px Inter";
-    if (data.options.color) { ctx.fillStyle = "#" + data.options.color; } else { ctx.fillStyle = "#343434"; }
+    ctx.fillStyle = backgroundColor;
     ctx.fillRect(45, 471, 120, 51);
     ctx.fillRect(637, 471, 120, 51);
-	if (data.options.tcolor) { ctx.fillStyle = "#" + data.options.tcolor; } else { ctx.fillStyle = "white"; }
+	  ctx.fillStyle = textColor;
     //ctx.fillStyle = "white";
     ctx.fillText(data.teams[0].name, 105 - ctx.measureText(data.teams[0].name).width/2, 507);
     ctx.fillText(data.teams[1].name, 696 - ctx.measureText(data.teams[1].name).width/2, 507);
@@ -110,16 +111,16 @@
     // We need this, so we can wait for the font to load before drawing on the canvas
     async function loadFonts(fontsToLoad) {
       for (const fontProps of fontsToLoad) {
-          const fontFamily = fontProps["font-family"];
-          const fontWeight = fontProps["font-weight"];
-          const fontStyle = fontProps["font-style"];
-          const fontUrl = "url(" + fontProps["src"] + ")";
-          const font = new FontFace(fontFamily, fontUrl);
-          font.weight = fontWeight;
-          font.style = fontStyle;
-          await font.load();
-          document.fonts.add(font);
-        }
+        const fontFamily = fontProps["font-family"];
+        const fontWeight = fontProps["font-weight"];
+        const fontStyle = fontProps["font-style"];
+        const fontUrl = "url(" + fontProps["src"] + ")";
+        const font = new FontFace(fontFamily, fontUrl);
+        font.weight = fontWeight;
+        font.style = fontStyle;
+        await font.load();
+        document.fonts.add(font);
+      }
     }
   });
 </script>
