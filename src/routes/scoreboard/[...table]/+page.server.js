@@ -13,7 +13,7 @@ async function fetchData(tableURL) {
     const html = await response.text();
 
     const $ = cheerio.load(html);
-    const tableBody = $("section.league-group-scores > .section-content > table > tbody");
+    const tableBody = $("section.league-group-scores > .block-content > .section-block > table > tbody");
   
     const teams = tableBody.find("tr > td:nth-child(2) > a > span.table-cell-item.name").toArray().map(el => $(el).text());
     const logos = tableBody.find("tr > td:nth-child(2) > a > span.table-cell-item.img-container img").toArray().map(el => $(el).attr("data-src"));
