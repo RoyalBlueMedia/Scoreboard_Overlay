@@ -18,10 +18,10 @@ async function fetchData(table, options) {
     const html = await response.text();
     const $ = cheerio.load(html);
 
-    const title = $(".page-title > h1").text();
+    const title = $("h1.page-title").text();
     if (!title) return {error: "Not a valid URL"}
 
-    const content = $("section.league-match-head > .section-content > .content-league-match-head");
+    const content = $("section.league-match-head > .block-content > .content-league-match-head");
     const teams = [content.find(".content-match-head-team1"), content.find(".content-match-head-team2")]
     .map(teamContent => 
       ({

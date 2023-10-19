@@ -16,7 +16,12 @@
   }
 </style>
 
-<div id="content"></div>
+
+<div id="content">
+{#if data.error}
+  <h1>{data.error}</h1>
+{/if}
+</div>
 
 <script>
   // @ts-nocheck
@@ -30,9 +35,9 @@
   }];
 
   export let data;
-  const state = data.options.score || "VS";
-  const textColor = "#" + (data.options.tcolor || "FFF"); // Default text color: White
-  const backgroundColor = "#" + (data.options.color || "343434"); // Default background color: Dark Gray
+  const state = data.options?.score || "VS";
+  const textColor = "#" + (data.options?.tcolor || "FFF"); // Default text color: White
+  const backgroundColor = "#" + (data.options?.color || "343434"); // Default background color: Dark Gray
 
   onMount(async () => {
     if (data.error) {
