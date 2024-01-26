@@ -37,7 +37,7 @@
   export let data;
   const state = data.options?.score || "VS";
   const textColor = "#" + (data.options?.tcolor || "FFF"); // Default text color: White
-  const backgroundColor = "#" + (data.options?.color || "343434"); // Default background color: Dark Gray
+  const backgroundColor = "#" + (data.options?.color || "252525"); // Default background color: Dark Gray
 
   onMount(async () => {
     if (data.error) {
