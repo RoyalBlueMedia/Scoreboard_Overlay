@@ -15,6 +15,7 @@
         <li class="team">
             <img class="logo" src={team.logo} alt="Team Logo" width="80" height="80">
             <div class="team-data">
+                <img class="country" src={team.country} alt="Team Country" width="20" height="20">
                 <span class="name">{team.name}</span>
                 <span class="wins">{team.wins}</span>
                 <span class="losses">{team.losses}</span>
@@ -43,7 +44,7 @@
     .team {
         display: flex;
         margin: 20px;
-        background-color: #111;
+        background-color: #252525;
         color: white;
     }
     .team-data {
@@ -62,6 +63,7 @@
     }
     .team-data > .name {
         width: 630px;
+        margin-left: -28px;
     }
     .team-data > .wins {
         width: 40px;
