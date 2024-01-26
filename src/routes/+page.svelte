@@ -5,7 +5,7 @@
     let liveMatchURL = 'https://scoreboard-overlay.xyz/live/';
     let liveMatchInputContent = '';
     let backgroundcolor = '252525';
-    let textcolor = 'fff';
+    let textcolor = 'ffffff';
     let score;
   
     onMount(() => {
