@@ -47,7 +47,7 @@
         color: white;
     }
     .team-data {
-        width: 710px;
+        width: 790px;
         height: 80px;
 
         margin: 0 30px;
@@ -56,12 +56,12 @@
         gap: 40px;
 
         font-weight: bolder;
-        font-size: 30px;
+        font-size: 29px;
         line-height: 50px;
         text-transform: uppercase;
     }
     .team-data > .name {
-        width: 550px;
+        width: 630px;
     }
     .team-data > .wins {
         width: 40px;
