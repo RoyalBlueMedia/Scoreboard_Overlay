@@ -88,7 +88,7 @@
             </div>
             <div>
                 <label for="scoreInputField">Score:</label>
-                <input type="text" id="scoreInputField" bind:value={score} />
+                <input type="text" id="scoreInputField" placeholder="Leave empty for 'VS'" bind:value={score} />
             </div>
         </div>
 
