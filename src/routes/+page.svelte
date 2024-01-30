@@ -1,7 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import { TextInput, Button } from '@svelteuidev/core';
-    import { ExternalLink, Opacity, Commit, Heart } from 'radix-icons-svelte';
+    import { ExternalLink, Opacity, BlendingMode, Commit, Heart } from 'radix-icons-svelte';
 
     let patreonURL = 'https://www.patreon.com/MajorPataponn';
     let scoreboardURL = 'https://scoreboard-overlay.xyz/scoreboard/';
@@ -108,7 +108,7 @@
                 bind:value={scoreboardBackgroundcolor}
             />
             <TextInput
-                icon={Opacity}
+                icon={BlendingMode}
                 label="Text Color"
                 placeholder="#ffffff"
                 disabled
@@ -139,7 +139,7 @@
                 bind:value={MatchBackgroundcolor}
             />
             <TextInput
-                icon={Opacity}
+                icon={BlendingMode}
                 label="Text Color"
                 placeholder="#ffffff"
                 bind:value={MatchTextcolor}
