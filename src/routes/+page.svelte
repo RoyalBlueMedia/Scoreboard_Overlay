@@ -14,16 +14,6 @@
     let MatchTextcolor = '#ffffff';
     let score;
   
-    onMount(() => {
-    // Get the text content of all input fields on mount
-    scoreboardInputContent = document.getElementById('scoreboardInputField').value;
-    scoreboardBackgroundcolor = document.getElementById('scoreboardBackgroundcolorInputField').value;
-    scoreboardTextcolor = document.getElementById('scoreboardTextcolorInputField').value;
-    MatchInputContent = document.getElementById('MatchInputField').value;
-    MatchBackgroundcolor = document.getElementById('MatchBackgroundcolorInputField').value;
-    MatchTextcolor = document.getElementById('MatchTextcolorInputField').value;
-    score = document.getElementById('scoreInputField').value;
-  });
 
   function openScoreboardLink() {
     // Construct the URL with the input content appended
