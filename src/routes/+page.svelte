@@ -1,24 +1,27 @@
 <script>
     import { onMount } from 'svelte';
-    import { TextInput } from '@svelteuidev/core';
-    import { Button } from '@svelteuidev/core';
-    import { ExternalLink, Opacity, Commit } from 'radix-icons-svelte';
+    import { TextInput, Button } from '@svelteuidev/core';
+    import { ExternalLink, Opacity, Commit, Heart } from 'radix-icons-svelte';
 
-
+    let patreonURL = 'https://www.patreon.com/MajorPataponn';
     let scoreboardURL = 'https://scoreboard-overlay.xyz/scoreboard/';
     let scoreboardInputContent = '';
-    let liveMatchURL = 'https://scoreboard-overlay.xyz/live/';
-    let liveMatchInputContent = '';
-    let backgroundcolor = '#252525';
-    let textcolor = '#ffffff';
+    let scoreboardBackgroundcolor = '#252525';
+    let scoreboardTextcolor = '#ffffff';
+    let MatchURL = 'https://scoreboard-overlay.xyz/live/';
+    let MatchInputContent = '';
+    let MatchBackgroundcolor = '#252525';
+    let MatchTextcolor = '#ffffff';
     let score;
   
     onMount(() => {
     // Get the text content of all input fields on mount
     scoreboardInputContent = document.getElementById('scoreboardInputField').value;
-    liveMatchInputContent = document.getElementById('liveMatchInputField').value;
-    backgroundcolor = document.getElementById('backgroundcolorInputField').value;
-    textcolor = document.getElementById('textcolorInputField').value;
+    scoreboardBackgroundcolor = document.getElementById('scoreboardBackgroundcolorInputField').value;
+    scoreboardTextcolor = document.getElementById('scoreboardTextcolorInputField').value;
+    MatchInputContent = document.getElementById('MatchInputField').value;
+    MatchBackgroundcolor = document.getElementById('MatchBackgroundcolorInputField').value;
+    MatchTextcolor = document.getElementById('MatchTextcolorInputField').value;
     score = document.getElementById('scoreInputField').value;
   });
 
@@ -26,23 +29,39 @@
     // Construct the URL with the input content appended
     const newScoreboardURL = `${scoreboardURL}${scoreboardInputContent}`;
 
+    if (!scoreboardInputContent) {
+        // Show a notification if the input is empty
+        alert('Please enter a scoreboard link');
+        return;
+    }
+
     // Open the link in a new tab
     window.open(newScoreboardURL, '_blank');
   }
 
-  function openLiveMatchLink() {
-  let fullURL = `${liveMatchURL}${liveMatchInputContent}?color=${parseHex(backgroundcolor)}&tcolor=${parseHex(textcolor)}`;
-
-  let updatedURL = '';
-
-  if (score) {
-    updatedURL = fullURL + `&score=${score}`;
-  } else {
-    updatedURL = fullURL;
+  function openPatreonLink() {
+    window.open(patreonURL, '_blank');
   }
 
-  // Open the link in a new tab
-  window.open(updatedURL, '_blank');
+  function openMatchLink() {
+    let fullURL = `${MatchURL}${MatchInputContent}?color=${parseHex(MatchBackgroundcolor)}&tcolor=${parseHex(MatchTextcolor)}`;
+
+    if (!MatchInputContent) {
+    // Show a notification if the input is empty
+    alert('Please enter a match link');
+    return;
+    }
+
+    let updatedURL = '';
+
+    if (score) {
+    updatedURL = fullURL + `&score=${score}`;
+    } else {
+    updatedURL = fullURL;
+    }
+
+    // Open the link in a new tab
+    window.open(updatedURL, '_blank');
 }
 
 
@@ -80,39 +99,51 @@
             placeholder="https://www.primeleague.gg/leagues/prm/3142-spring-split-2024/group/509-gruppenphase/5809-gruppe-5-33"
             bind:value={scoreboardInputContent}
         />
-
+        <div class="smallInputs">
+            <TextInput
+                icon={Opacity}
+                label="Background Color"
+                placeholder="#252525"
+                disabled
+                bind:value={scoreboardBackgroundcolor}
+            />
+            <TextInput
+                icon={Opacity}
+                label="Text Color"
+                placeholder="#ffffff"
+                disabled
+                bind:value={scoreboardTextcolor}
+            />
+        </div>
         <Button
+            ripple
             on:click={openScoreboardLink}
         >
             Open Scoreboard
         </Button>
-
     </div>
 
     <div class="inputWrapper">
         <h1>Match</h1>
-
         <TextInput 
             icon={ExternalLink}
             label="Match Link"
             placeholder="https://www.primeleague.gg/leagues/matches/1108940-as-esports-vs-give-me-your-sock"
-            bind:value={liveMatchInputContent}
+            bind:value={MatchInputContent}
         />
         <div class="smallInputs">
             <TextInput
                 icon={Opacity}
                 label="Background Color"
                 placeholder="#252525"
-                bind:value={backgroundcolor}
+                bind:value={MatchBackgroundcolor}
             />
-    
             <TextInput
                 icon={Opacity}
                 label="Text Color"
                 placeholder="#ffffff"
-                bind:value={textcolor}
+                bind:value={MatchTextcolor}
             />
-    
             <TextInput
                 icon={Commit}
                 label="Score"
@@ -120,14 +151,25 @@
                 bind:value={score}
             />
         </div>
-
         <Button
-	        on:click={openLiveMatchLink}
+            ripple
+	        on:click={openMatchLink}
         >
 	        Open Match
         </Button>
     </div>
-</div> 
+</div>
+
+<div class="patreonButton">
+    <Button
+        color="red"
+        ripple
+        on:click={openPatreonLink}
+    >
+        <Heart slot="leftIcon" />
+        Support on Patreon
+    </Button>
+</div>
 
    
 
@@ -166,5 +208,11 @@
         display: flex;
         flex-direction: row;
         gap: 16px;
+    }
+    .patreonButton {
+        position: absolute;
+        left: calc(50% - (192px / 2));
+        bottom: 37px;
+        z-index: -1;
     }
 </style>
