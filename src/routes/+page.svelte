@@ -203,8 +203,10 @@
         background-color: #f8f8f8;
         border-radius: 16px;
         border: 1px solid #f1f1f1;
-        min-width: 680px;
+        width: 100%;
+        min-width: 380px;
         max-width: 900px;
+        flex: 1;
     }
     .smallInputs {
         display: flex;
