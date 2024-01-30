@@ -1,7 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import { TextInput, Button } from '@svelteuidev/core';
-    import { ExternalLink, Opacity, BlendingMode, Commit, Heart } from 'radix-icons-svelte';
+    import { ExternalLink, Opacity, BlendingMode, Commit, Heart, Link2 } from 'radix-icons-svelte';
 
     let patreonURL = 'https://www.patreon.com/MajorPataponn';
     let scoreboardURL = 'https://scoreboard-overlay.xyz/scoreboard/';
@@ -94,7 +94,7 @@
     <div class="inputWrapper">
         <h1>Scoreboard</h1>
         <TextInput 
-            icon={ExternalLink}
+            icon={Link2}
             label="Division Link"
             placeholder="https://www.primeleague.gg/leagues/prm/3142-spring-split-2024/group/509-gruppenphase/5809-gruppe-5-33"
             bind:value={scoreboardInputContent}
@@ -119,6 +119,7 @@
             ripple
             on:click={openScoreboardLink}
         >
+            <ExternalLink slot="rightIcon" />
             Open Scoreboard
         </Button>
     </div>
@@ -126,7 +127,7 @@
     <div class="inputWrapper">
         <h1>Match</h1>
         <TextInput 
-            icon={ExternalLink}
+            icon={Link2}
             label="Match Link"
             placeholder="https://www.primeleague.gg/leagues/matches/1108940-as-esports-vs-give-me-your-sock"
             bind:value={MatchInputContent}
@@ -155,6 +156,7 @@
             ripple
 	        on:click={openMatchLink}
         >
+        <ExternalLink slot="rightIcon" />
 	        Open Match
         </Button>
     </div>
